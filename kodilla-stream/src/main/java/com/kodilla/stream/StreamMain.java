@@ -1,5 +1,6 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.array.ArrayOperations;
 import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
 
@@ -21,6 +22,9 @@ public class StreamMain {
         System.out.println("Number of entries in result map: " + resultUsersMap.size());
         resultUsersMap.entrySet().stream()
                 .forEach(entry -> System.out.println("User # " + entry.getKey() + " " + entry.getValue()));
+
+
     }
+
 
 }
