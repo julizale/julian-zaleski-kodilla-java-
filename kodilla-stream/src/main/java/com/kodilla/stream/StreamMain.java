@@ -23,7 +23,6 @@ public class StreamMain {
         resultUsersMap.entrySet().stream()
                 .forEach(entry -> System.out.println("User # " + entry.getKey() + " " + entry.getValue()));
 
-
     }
 
 

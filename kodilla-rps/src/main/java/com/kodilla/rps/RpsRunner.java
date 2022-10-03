@@ -22,7 +22,7 @@ public class RpsRunner {
             while (game.isPlaying()) {
                 char choice = ' ';
                 while (choice == ' ') {
-                    choice = game.getUserInput("Shoot!", "xn12345");
+                    choice = game.getUserInput("Shoot!", "xnXN12345");
                     if (choice == 'x' || choice == 'X') {
                         char quitOrNot = game.getUserInput("Exit? Are You sure? (y / n)",
                                 "ynYN");
@@ -54,11 +54,15 @@ public class RpsRunner {
                     game.setPlaying(false);
                 }
             }
+
             char playOrNot = game.getUserInput("New game - n *** Exit - x","XxNn");
             if (playOrNot == 'X' || playOrNot == 'x') {
                 end = true;
                 System.out.println("Bye, bye!");
             }
+            //tu uruchamiam metodę którą stworzę "zamiast gameloop" (wewnątrz tej metody - rekurencja)
+            //System.exit doczytać
         }
     }
 }
+
