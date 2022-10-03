@@ -60,9 +60,8 @@ public class RpsRunner {
                 end = true;
                 System.out.println("Bye, bye!");
             }
-            //tu uruchamiam metodę którą stworzę "zamiast gameloop" (wewnątrz tej metody - rekurencja)
+            //tu uruchamiam metodę którą stworzę "zamiast gameloop" (wewnątrz tej metody - rekursja)
             //System.exit doczytać
         }
     }
 }
-
