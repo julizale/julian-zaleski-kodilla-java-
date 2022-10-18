@@ -2,66 +2,26 @@ package com.kodilla.rps;
 
 public class RpsRunner {
 
-
     public static void main(String[] args) {
 
+        UserInput userInput = new UserInput();
         Game game = new Game();
-        boolean end = false;
 
-        gameloop:
-        while (!end) {
+        while (true) {
 
-            game.zeroPoints();
-            game.inputNumberOfPointsToWin();
-            System.out.println("     x - End Game  ***  n - New Game");
-            System.out.println("1 -rock  ***  2 - paper  ***  3 - scissors\n" +
-                    "       4 - lizard   ***   5 - Spock");
-            game.setPlaying(true);
+            game.initializeGame();
 
-            roundloop:
-            while (game.isPlaying()) {
-                char choice = ' ';
-                while (choice == ' ') {
-                    choice = game.getUserInput("Shoot!", "xnXN12345");
-                    if (choice == 'x' || choice == 'X') {
-                        char quitOrNot = game.getUserInput("Exit? Are You sure? (y / n)",
-                                "ynYN");
-                        if (quitOrNot == 'Y' || quitOrNot == 'y') {
-                            break gameloop;
-                        } else {
-                            choice = ' ';
-                        }
-                    }
-                    if (choice == 'n' || choice == 'N') {
-                        char newGameOrNot = game.getUserInput("New game? Are You sure you want to quit this game? (y / n)",
-                                "ynYN");
-                        if (newGameOrNot == 'y' || newGameOrNot == 'Y') {
-                            game.setPlaying(false);
-                            break roundloop;
-                        } else {
-                            choice = ' ';
-                        }
-                    }
-                }
-
-                game.playRound(game.charToMove(choice));
-
-                if (game.isOver()) {
-                    Player winner = game.getPlayer().getPoints() > game.getComputer().getPoints() ?
-                            game.getPlayer() : game.getComputer();
-                    System.out.println(winner.getName() + " wins! --> " +
-                            game.getPlayer().getPoints() + " : " + game.getComputer().getPoints());
-                    game.setPlaying(false);
+            while (!game.isOver()) {
+                char choice = userInput.getUserInput("Shoot!", "xnXN12345");
+                switch (choice) {
+                    case 'x', 'X' -> game.quitGame();
+                    case 'n', 'N' -> game.newGame();
+                    case '1','2','3','4','5' -> game.playRound(choice);
+                    default -> throw new IllegalArgumentException("Invalid char: " + choice);
                 }
             }
-
-            char playOrNot = game.getUserInput("New game - n *** Exit - x","XxNn");
-            if (playOrNot == 'X' || playOrNot == 'x') {
-                end = true;
-                System.out.println("Bye, bye!");
-            }
-            //tu uruchamiam metodę którą stworzę "zamiast gameloop" (wewnątrz tej metody - rekursja)
-            //System.exit doczytać
+            game.displayWinner();
+            game.runFinalProcedure();
         }
     }
 }

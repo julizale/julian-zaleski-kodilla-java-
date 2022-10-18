@@ -2,10 +2,10 @@ package com.kodilla.rps;
 
 public class Player {
 
-    private String name;
+    private final String name;
     private int points = 0;
 
-    public Player(String name) {
+    public Player(final String name) {
         this.name = name;
     }
 
