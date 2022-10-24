@@ -20,7 +20,7 @@ public class SimpleFlight implements Flight {
         return arrivalAirport;
     }
 
-    @Override
+   /* @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -31,7 +31,7 @@ public class SimpleFlight implements Flight {
     @Override
     public int hashCode() {
         return Objects.hash(departureAirport, arrivalAirport);
-    }
+    }*/
 
     @Override
     public String toString() {

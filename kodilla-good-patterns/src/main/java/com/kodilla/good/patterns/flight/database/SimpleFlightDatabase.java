@@ -18,7 +18,7 @@ public class SimpleFlightDatabase implements FlightDatabase {
         flights.add(new SimpleFlight("Radom", "Gdańsk"));
         flights.add(new SimpleFlight("Katowice", "Radom"));
         flights.add(new SimpleFlight("Warszawa", "Gdańsk"));
-        flights.add(new SimpleFlight("Kraków", "Warszawa"));
+        flights.add(new SimpleFlight("Kraków", "Wrocław"));
     }
 
     @Override
@@ -47,4 +47,17 @@ public class SimpleFlightDatabase implements FlightDatabase {
         }
         return journeys;
     }
+
+    @Override
+    public List<Flight> getFlightsWithSpecifiedConnection(String departureAirport, String connectionAirport, String arrivalAirport) {
+        List<Flight> result = new ArrayList<>();
+        Flight flight1 = new SimpleFlight(departureAirport, connectionAirport);
+        Flight flight2 = new SimpleFlight(connectionAirport, arrivalAirport);
+        if (flights.contains(flight1) && flights.contains(flight2)) {
+            result.add(flight1);
+            result.add(flight2);
+        }
+        return result;
+    }
+
 }

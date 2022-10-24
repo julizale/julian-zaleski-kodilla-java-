@@ -9,4 +9,5 @@ public interface FlightDatabase {
     List<Flight> getFlightsFrom(String departureAirport);
     List<Flight> getFlightsTo(String arrivalAirport);
     List<Journey> getFlightsWithConnection(String departureAirport, String arrivalAirport);
+    List<Flight> getFlightsWithSpecifiedConnection(String departureAirport, String connectionAirport, String arrivalAirport);
 }

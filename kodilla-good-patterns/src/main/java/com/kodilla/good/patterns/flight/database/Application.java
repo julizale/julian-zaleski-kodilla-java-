@@ -7,5 +7,7 @@ public class Application {
         System.out.println(flightDatabase.getFlightsFrom("Katowice"));
         System.out.println(flightDatabase.getFlightsTo("Gdańsk"));
         System.out.println(flightDatabase.getFlightsWithConnection("Katowice", "Gdańsk"));
+        System.out.println(flightDatabase.getFlightsWithSpecifiedConnection("Gdańsk",
+                "Kraków", "Wrocław"));
     }
 }
