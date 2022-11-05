@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -13,6 +15,9 @@ class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -51,12 +56,68 @@ class CompanyDaoTestSuite {
         assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        //try {
-        //    companyDao.deleteById(softwareMachineId);
-        //    companyDao.deleteById(dataMaestersId);
-        //    companyDao.deleteById(greyMatterId);
-        //} catch (Exception e) {
-        //    //do nothing
-        //}
+        try {
+            companyDao.deleteById(softwareMachineId);
+            companyDao.deleteById(dataMastersId);
+            companyDao.deleteById(greyMatterId);
+        } catch (Exception e) {
+            //do nothing
+        }
+    }
+
+    @Test
+    void testRetrieveEmployeesWithLastname() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        employeeDao.save(johnSmith);
+        int id1 = johnSmith.getId();
+        Employee stephanieClarkson = new Employee("Stephanie", "Clarkson");
+        employeeDao.save(stephanieClarkson);
+        int id2 = stephanieClarkson.getId();
+        Employee amandaSmith = new Employee("Amanda", "Smith");
+        employeeDao.save(amandaSmith);
+        int id3 = amandaSmith.getId();
+
+        //When
+        List<Employee> employeesWithLastName = employeeDao.retrieveEmployeesWithLastname("Smith");
+
+        //Then
+        assertEquals(2, employeesWithLastName.size());
+
+        //CleanUp
+        try {
+            employeeDao.deleteById(id1);
+            employeeDao.deleteById(id2);
+            employeeDao.deleteById(id3);
+        } catch (Exception e) {
+            //do nothing
+        }
+    }
+
+    @Test
+    void testRetrieveCompaniesWithFirst3Letters() {
+        //Given
+        Company dataMasters = new Company("Data Masters");
+        companyDao.save(dataMasters);
+        int id2 = dataMasters.getId();
+        Company softwareMachine = new Company("Software Machine");
+        companyDao.save(softwareMachine);
+        int id1 = softwareMachine.getId();
+        Company dataBulldog = new Company("Data Bulldog");
+        companyDao.save(dataBulldog);
+        int id3 = dataBulldog.getId();
+
+        //When
+        List<Company> companiesWithFirst3Letters = companyDao.retrieveCompaniesWithFirst3Letters("Dat");
+
+        //Then
+        try {
+            assertEquals(2, companiesWithFirst3Letters.size());
+        } finally {
+            //CleanUp
+            companyDao.deleteById(id1);
+            companyDao.deleteById(id2);
+            companyDao.deleteById(id3);
+        }
     }
 }
