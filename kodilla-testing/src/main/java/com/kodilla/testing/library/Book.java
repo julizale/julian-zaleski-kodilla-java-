@@ -8,10 +8,13 @@ public class Book {
     String author;
     int publicationYear;
 
+    Integer[] inter;
+
     public Book(String title, String author, int publicationYear) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
+        inter = new Integer[0];
     }
 
     public String getTitle() {

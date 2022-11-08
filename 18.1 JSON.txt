@@ -1,0 +1,23 @@
+{
+    "name": "2CV",
+    "brand": "Citroen",
+    "seats": [
+        {
+            "fabric": "leather",
+            "color": "black"
+        },
+        {
+            "fabric": "leather",
+            "color": "black"
+        },
+        {
+            "fabric": "alcantara",
+            "color": "black"
+        },
+        {
+            "fabric": "alcantara",
+            "color": "black"
+        },
+    ],
+    "engine capacity": 435
+}
