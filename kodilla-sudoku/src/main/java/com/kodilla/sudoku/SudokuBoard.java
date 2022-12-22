@@ -1,5 +1,7 @@
 package com.kodilla.sudoku;
 
+import com.kodilla.sudoku.exception.ValueOutOfBoundsException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,5 +33,21 @@ public class SudokuBoard {
             stringBuilder.append("\n  -------------------------------------\n");
         }
         return stringBuilder.toString();
+    }
+
+    public SudokuBoard deepCopy() throws ValueOutOfBoundsException {
+        SudokuBoard board = new SudokuBoard();
+        for (int row = 0; row < 9; row++) {
+            SudokuRow sudokuRow = new SudokuRow();
+            for (int column = 0; column < 9; column++) {
+                SudokuElement sudokuElement = new SudokuElement();
+                sudokuElement.setValue(this.getSudokuRowList().get(row).getSudokuElementList().get(column).getValue());
+                sudokuElement.getPossibleValues().clear();
+                for (Integer i: this.getSudokuRowList().get(row).getSudokuElementList().get(column).getPossibleValues()) {
+                    sudokuElement.getPossibleValues().add(i);
+                }
+            }
+        }
+        return board;
     }
 }

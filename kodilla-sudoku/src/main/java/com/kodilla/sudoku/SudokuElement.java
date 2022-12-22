@@ -1,5 +1,7 @@
 package com.kodilla.sudoku;
 
+import com.kodilla.sudoku.exception.ValueOutOfBoundsException;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -20,6 +22,10 @@ public class SudokuElement {
         return value;
     }
 
+    public List<Integer> getPossibleValues() {
+        return possibleValues;
+    }
+
     public void setValue(int value) throws ValueOutOfBoundsException, IllegalArgumentException {
         if (value < 1 || value > 9) {
             throw new ValueOutOfBoundsException("Sudoku element should have value 1-9");
@@ -27,6 +33,7 @@ public class SudokuElement {
             throw new IllegalArgumentException();
         } else {
             this.value = value;
+            possibleValues.removeIf(possibleValue -> possibleValue == value);
         }
     }
 

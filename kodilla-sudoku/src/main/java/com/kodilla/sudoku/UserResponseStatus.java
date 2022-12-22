@@ -1,6 +1,6 @@
 package com.kodilla.sudoku;
 
-public enum ResponseStatus {
+public enum UserResponseStatus {
 
     COORDINATES_VALUE,
     SUDOKU,

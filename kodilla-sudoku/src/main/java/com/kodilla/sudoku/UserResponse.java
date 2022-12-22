@@ -1,20 +1,20 @@
 package com.kodilla.sudoku;
 
+import com.kodilla.sudoku.exception.ValueOutOfBoundsException;
+
 public class UserResponse {
 
     private final int column;
     private final int row;
     private final int value;
-    private final ResponseStatus responseStatus;
+    private final UserResponseStatus userResponseStatus;
 
 
-    public UserResponse(final int column, final int row, final int value, final ResponseStatus responseStatus) throws ValueOutOfBoundsException {
-        if (column > 0 && column <=9 && row > 0 && row <=9 && value > 0 && value <=9) {
+    public UserResponse(final int column, final int row, final int value, final UserResponseStatus userResponseStatus) {
             this.column = column;
             this.row = row;
             this.value = value;
-            this.responseStatus = responseStatus;
-        } else throw new ValueOutOfBoundsException("Argument should be a digit from range 1-9");
+            this.userResponseStatus = userResponseStatus;
     }
 
     public int getColumn() {
@@ -29,7 +29,7 @@ public class UserResponse {
         return value;
     }
 
-    public ResponseStatus getResponseStatus() {
-        return responseStatus;
+    public UserResponseStatus getResponseStatus() {
+        return userResponseStatus;
     }
 }

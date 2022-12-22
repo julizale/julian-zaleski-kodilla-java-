@@ -1,12 +1,14 @@
 package com.kodilla.sudoku;
 
+import com.kodilla.sudoku.exception.ValueOutOfBoundsException;
+
 import java.util.Scanner;
 
 public class UserInput {
 
     Scanner scanner = new Scanner(System.in);
 
-    public UserResponse getInput() throws ValueOutOfBoundsException {
+    public UserResponse getInput()  {
 
         while (true) {
 
@@ -19,12 +21,12 @@ public class UserInput {
 
             if (inputString.length() > 2 &&
                     (inputString.startsWith("END") || inputString.startsWith("end"))) {
-                return new UserResponse(1,1,1, ResponseStatus.ENDGAME);
+                return new UserResponse(1,1,1, UserResponseStatus.ENDGAME);
             }
 
             if (inputString.length() > 5 &&
                     (inputString.startsWith("SUDOKU") || inputString.startsWith("sudoku"))) {
-                return new UserResponse(1,1,1, ResponseStatus.SUDOKU);
+                return new UserResponse(1,1,1, UserResponseStatus.SUDOKU);
             }
 
             if (inputString.length()>2) {
@@ -41,7 +43,7 @@ public class UserInput {
                             Character.getNumericValue(inputString.charAt(0)),
                             Character.getNumericValue(inputString.charAt(1)),
                             Character.getNumericValue(inputString.charAt(2)),
-                            ResponseStatus.COORDINATES_VALUE
+                            UserResponseStatus.COORDINATES_VALUE
                     );
                 }
             }

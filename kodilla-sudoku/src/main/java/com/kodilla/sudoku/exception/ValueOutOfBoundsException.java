@@ -1,4 +1,4 @@
-package com.kodilla.sudoku;
+package com.kodilla.sudoku.exception;
 
 public class ValueOutOfBoundsException extends Exception {
     public ValueOutOfBoundsException(String message) {
