@@ -1,4 +1,4 @@
-package com.kodilla;
+package com.kodilla.bubbles;
 
 import java.util.List;
 

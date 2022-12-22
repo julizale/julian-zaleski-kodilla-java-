@@ -1,4 +1,4 @@
-import com.kodilla.BubbleSorter;
+import com.kodilla.bubbles.BubbleSorter;
 
 import java.util.Arrays;
 import java.util.List;

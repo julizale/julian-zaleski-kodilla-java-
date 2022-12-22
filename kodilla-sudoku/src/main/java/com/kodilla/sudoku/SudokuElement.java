@@ -20,9 +20,9 @@ public class SudokuElement {
         return value;
     }
 
-    public void setValue(int value) throws IllegalArgumentException {
+    public void setValue(int value) throws ValueOutOfBoundsException, IllegalArgumentException {
         if (value < 1 || value > 9) {
-            throw new IllegalArgumentException("Sudoku element should have value 1-9");
+            throw new ValueOutOfBoundsException("Sudoku element should have value 1-9");
         } else if (!possibleValues.contains(value)) {
             throw new IllegalArgumentException();
         } else {
