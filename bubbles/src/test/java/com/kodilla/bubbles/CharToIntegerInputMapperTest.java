@@ -31,8 +31,10 @@ class CharToIntegerInputMapperTest {
 
         //When
         int x = charToIntegerInputMapper.mapCharToInteger('9');
+        int y = charToIntegerInputMapper.mapCharToInteger('0');
 
         //Then
         assertEquals(9, x);
+        assertEquals(0, y);
     }
 }
