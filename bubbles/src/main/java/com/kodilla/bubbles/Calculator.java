@@ -67,9 +67,25 @@ public class Calculator {
         return result;
     }
 
-   /* Napisz program, który zamieni liczbę zapisaną jako łańcuch znaków (np. “2040”) na liczbę całkowitą w programie tak,
-    aby możliwa była konwersja danych wprowadzonych przez użytkownika na zmienne, których możemy użyć do
-     obliczeń matematycznych. Kluczowy algorytm zamknij w osobnej metodzie, która zwróci obliczoną wartość jako
-      liczbę całkowitą (ang. integer). Obsłuż błędy, takie jak niedozwolone znaki (litery, przecinki, kropki itp).
+    public String mapDecToBin(int dec) {
+        if (dec == 0) {
+            return "0";
+        }
+        StringBuilder bin = new StringBuilder();
+        int arg = Math.abs(dec);
+        while (arg > 0) {
+            bin.insert(0, arg % 2);
+            arg /= 2;
+        }
+        if (dec < 0) {
+            bin.insert(0, '-');
+        }
+        return bin.toString();
+    }
+
+   /* Napisz program, który zamieni liczby całkowite w systemie dziesiętnym na liczby całkowite zapisane w systemie dwójkowym
+    (binarnym). Kluczowy algorytm zamknij w osobnej funkcji/metodzie, która będzie przyjmować jeden argument wejściowy
+     (liczba dziesiętna powinna być zapisana w pamięci jako liczba całkowita (nie jako string)).
+     Po obliczeniach funkcja ta powinna zwracać wynik w postaci ciągu znaków (string).
 */
 }

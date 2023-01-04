@@ -60,4 +60,23 @@ public class CalculatorTestSuite {
         assertThrows(NotNumericCharacterException.class, () -> calculator.mapStringToInt("000AWs"));
     }
 
+    @Test
+    void testMapDecToBin() {
+        //Given
+        Calculator calculator = new Calculator();
+        //When
+        String bin1 = calculator.mapDecToBin(5);
+        System.out.println(bin1);
+        String bin2 = calculator.mapDecToBin(-128);
+        System.out.println(bin2);
+        String bin3 = calculator.mapDecToBin(95);
+        System.out.println(bin3);
+        String bin4 = calculator.mapDecToBin(0);
+        System.out.println(bin4);
+        //Then
+        assertEquals("101", bin1);
+        assertEquals("-10000000", bin2);
+        assertEquals("1011111", bin3);
+        assertEquals("0", bin4);
+    }
 }
