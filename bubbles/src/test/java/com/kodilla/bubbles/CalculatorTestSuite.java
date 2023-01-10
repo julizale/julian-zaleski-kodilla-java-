@@ -79,4 +79,24 @@ public class CalculatorTestSuite {
         assertEquals("1011111", bin3);
         assertEquals("0", bin4);
     }
+
+    @Test
+    void testMapDecToHex() {
+        //Given
+        Calculator calculator = new Calculator();
+        //When
+        String hex1 = calculator.mapDecToHex(5);
+        System.out.println(hex1);
+        String hex2 = calculator.mapDecToHex(12810);
+        System.out.println(hex2);
+        String hex3 = calculator.mapDecToHex(-43);
+        System.out.println(hex3);
+        String hex4 = calculator.mapDecToHex(0);
+        System.out.println(hex4);
+        //Then
+        assertEquals("5", hex1);
+        assertEquals("320A", hex2);
+        assertEquals("-2B", hex3);
+        assertEquals("0", hex4);
+    }
 }

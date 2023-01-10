@@ -14,7 +14,7 @@ public enum DbManager {
     DbManager() {                                              // [3]
         Properties connectionProps = new Properties();         // [4]
         connectionProps.put("user", "kodilla_user");           // [5]
-        connectionProps.put("password", "kodilla_Pass123");    // [6]
+        connectionProps.put("password", "kodilla_password");    // [6]
         try {
             conn = DriverManager.getConnection(                // [7]
                     "jdbc:mysql://localhost:3306/kodilla_course" +

@@ -83,4 +83,27 @@ public class Calculator {
         return bin.toString();
     }
 
+    public String mapDecToHex(int dec) {
+        if (dec==0) {
+            return "0";
+        }
+        String hexDigits = "0123456789ABCDEF";
+        StringBuilder hex = new StringBuilder();
+        int arg = Math.abs(dec);
+        while (arg > 0) {
+            char digit = hexDigits.charAt(arg % 16);
+            hex.insert(0, digit);
+            arg /= 16;
+        }
+        if (dec < 0) {
+            hex.insert(0, '-');
+        }
+        return hex.toString();
+    }
+
+/*    Napisz program, który zamieni liczby całkowite w systemie dziesiętnym na liczby całkowite zapisane w
+ systemie szesnastkowym (heksadecymalnym). Kluczowy algorytm zamknij w osobnej funkcji/metodzie,
+  która będzie przyjmować jeden argument wejściowy (liczba dziesiętna powinna być zapisana w pamięci jako
+   liczba całkowita (nie jako string)). Po obliczeniach funkcja ta powinna zwracać wynik w postaci ciągu znaków (string).*/
+
 }
