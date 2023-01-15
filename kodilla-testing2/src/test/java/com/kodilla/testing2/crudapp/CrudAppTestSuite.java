@@ -53,6 +53,23 @@ public class CrudAppTestSuite {
         return taskName;
     }
 
+    private void deleteCrudAppTestTask(String taskName) throws InterruptedException {
+
+        Thread.sleep(4000);
+
+        driver.findElements(
+                        By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .filter(anyForm ->
+                        anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
+                                .getText().equals(taskName))
+                .forEach(theForm -> {
+                    theForm.findElement(By.xpath(".//div[contains(@class, \"datatable__row-section-wrapper\")]/fieldset/button[4]"))
+                            .click();
+                });
+
+        Thread.sleep(4000);
+    }
+
     private void sendTestTaskToTrello(String taskName) throws InterruptedException {
         driver.navigate().refresh();
 
@@ -115,5 +132,7 @@ public class CrudAppTestSuite {
         String taskName = createCrudAppTestTask();
         sendTestTaskToTrello(taskName);
         assertTrue(checkTaskExistsInTrello(taskName));
+        //Cleanup
+        deleteCrudAppTestTask(taskName);
     }
 }
